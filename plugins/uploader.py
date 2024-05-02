@@ -20,13 +20,13 @@ async def uploaderHandler(bot:Update, msg:Message):
 
         pmsg = await msg.reply_text(
             "<code>We are finding your login details from our database...</code>",
-            parse_mode = 'html'
+            parse_mode = 'HTML'
         )
         loginDetail = getting_email_pass(msg.chat.id)
         if loginDetail:
             await pmsg.edit_text(
                 "<code>Login details Found, Now verifying it...</code>",
-                parse_mode = 'html'
+                parse_mode = 'HTML'
             )
             email, password = loginDetail
             mlog = loginInstance(email, password, bot)
@@ -34,17 +34,17 @@ async def uploaderHandler(bot:Update, msg:Message):
             if isinstance(mlog, int):
                 await pmsg.edit_text(
                     f"Seems like your <b>Login Detail has changed.</b> /revoke this account, and add new login detail.{common_text}",
-                    parse_mode = 'html'
+                    parse_mode = 'HTML'
                 )
             elif not mlog:
                 await pmsg.edit_text(
                     f"<b>Something went wrong while login to your account.</b>{common_text}",
-                    parse_mode = 'html'
+                    parse_mode = 'HTML'
                 )
             else:
                 await pmsg.edit_text(
                     "<code>Login details successfully verifed. Now checking url...</code>",
-                    parse_mode = 'html'
+                    parse_mode = 'HTML'
                 )
                 filename = None
                 downLoc = Config.DOWNLOAD_LOCATION + randomChar(4) + '//'
@@ -63,7 +63,7 @@ async def uploaderHandler(bot:Update, msg:Message):
                         print(e)
                         await pmsg.edit_text(
                             f"<b>Something went wrong while attempting to download file.<b>\n{e}",
-                            parse_mode = 'html'
+                            parse_mode = 'HTML'
                         )
                         await bot.send_message(
                             Config.OWNER_ID,
@@ -87,7 +87,7 @@ async def uploaderHandler(bot:Update, msg:Message):
                         else:
                             return pmsg.edit_text(
                                 f"Don't use Multiple <code>|</code>{common_text}",
-                                parse_mode = 'html'
+                                parse_mode = 'HTML'
                             )
                     else:
                         url = urlText.strip()
@@ -108,7 +108,7 @@ async def uploaderHandler(bot:Update, msg:Message):
                         if downObj.get_final_filesize() <= 2147483648:
                             await pmsg.edit_text(
                                 "<b>URL also verifed, Now downloading the file...</b>",
-                                parse_mode = 'html'
+                                parse_mode = 'HTML'
                             )
                             while not downObj.isFinished():
                                 progress_bar = downObj.get_progress_bar().replace('#', '■').replace('-', '□')
@@ -120,7 +120,7 @@ async def uploaderHandler(bot:Update, msg:Message):
                                 try:
                                     await pmsg.edit_text(
                                         f"<b>Downloading... !! Keep patience...\n {progress_bar}\n📊Percentage: {percentage}%\n✅Completed: {completed}\n🚀Speed: {speed}\n⌚️Remaining Time: {remaining}</b>",
-                                        parse_mode = 'html'
+                                        parse_mode = 'HTML'
                                     )
                                 except exceptions.bad_request_400.MessageNotModified:
                                     pass
@@ -132,14 +132,14 @@ async def uploaderHandler(bot:Update, msg:Message):
                                     try:
                                         await pmsg.edit_text(
                                             "<b>File successfully downloaded to server, 😊Now uploading to Drive.</b>",
-                                            parse_mode = 'html'
+                                            parse_mode = 'HTML'
                                         )
                                     except exceptions.bad_request_400.MessageNotModified:
                                         pass
                                 else:
                                     await pmsg.edit_text(
                                         f"<b>Something went wrong while downloading File</b>\n{downObj.get_errors()}",
-                                        parse_mode = 'html'
+                                        parse_mode = 'HTML'
                                     )
                                     return await bot.send_message(
                                         Config.OWNER_ID,
@@ -161,7 +161,7 @@ async def uploaderHandler(bot:Update, msg:Message):
                     print(e)
                     await pmsg.edit_text(
                         f"<b>Something went wrong while Uploading File.</b>\n{e}",
-                        parse_mode = 'html'
+                        parse_mode = 'HTML'
                     )
                     await bot.send_message(
                         Config.OWNER_ID,
@@ -170,14 +170,14 @@ async def uploaderHandler(bot:Update, msg:Message):
                 else:
                     await pmsg.edit_text(
                         "<b>Your file is successfully uploaded🥳🥳🥳.</b>",
-                        parse_mode = 'html'
+                        parse_mode = 'HTML'
                     )
                 finally:
                     shutil.rmtree(downLoc)
         else:
             await pmsg.edit_text(
                 f"<i>Your account is not logged in😒, so I am unable to upload file.</i>{common_text}",
-                parse_mode = 'html'
+                parse_mode = 'HTML'
             )
     return
 
