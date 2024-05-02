@@ -53,13 +53,11 @@ async def search_user_in_community(
         if "kicked" in (userGroup.status, userChannel.status):
             await msg.reply_text(
                 "<b>You are Banned🚫 from TCA Community.\nContact @HiroDarlingInTheFranxxAnime (Owner of TCA)</b>",
-                parse_mode = 'html'
             )
             return
     except UserNotParticipant:
         await msg.reply_text(
             f"<b>To use this bot, you need to Join our channel and Group😁🤪.</b>{common_text}",
-            parse_mode = 'html',
             reply_markup = InlineKeyboardMarkup(
                 [
                     [
@@ -137,7 +135,7 @@ def editProgressMsg(current, total, pmsg, t1):
     remaining = int((((total - current)/1024)/1024)/speed)
     
     try:
-        pmsg.edit_text(f"<b>Downloading... !! Keep patience...\n {progress_bar}\n📊Percentage: {percentage}%\n✅Completed: {completed} MB\n🚀Speed: {speed} MB/s\n⌚️Remaining Time: {remaining} seconds</b>", parse_mode = 'html')
+        pmsg.edit_text(f"<b>Downloading... !! Keep patience...\n {progress_bar}\n📊Percentage: {percentage}%\n✅Completed: {completed} MB\n🚀Speed: {speed} MB/s\n⌚️Remaining Time: {remaining} seconds</b>",)
     except exceptions.bad_request_400.MessageNotModified:
         pass
     finally:
