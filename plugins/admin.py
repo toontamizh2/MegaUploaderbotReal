@@ -14,7 +14,7 @@ async def logHandler(bot:Update, msg:Message):
     except Exception as e:
         await msg.reply_text(
             f"Something went wrong while sending log file.\n{e}",
-            parse_mode = 'html'
+            parse_mode = 'HTML'
         )
 
 
@@ -26,11 +26,11 @@ async def broadcast_handler(bot:Update, msg:Message):
     if not MSG:
         return await msg.reply_text(
             "First send me the message that you want to send to the other users of this bot! <b>Then as a reply to it send <code>/broadcast</code></b>",
-            parse_mode = 'html'
+            parse_mode = 'HTML'
         )
     m = await msg.reply_text(
         "<code>Broadcasting..</code>",
-        parse_mode = 'html'
+        parse_mode = 'HTML'
     )
     SUCE = 0
     FAIL = 0
