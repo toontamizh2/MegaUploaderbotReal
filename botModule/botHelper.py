@@ -43,11 +43,11 @@ async def search_user_in_community(
     ):
     try:
         userChannel = await bot.get_chat_member(
-            '@AJPyroVerse',
+            '@Tamilcartoonanime_official',
             msg.chat.id
         )
         userGroup = await bot.get_chat_member(
-            '@AJPyroVerseGroup',
+            '@TamilCartoonAnimeDiscuss',
             msg.chat.id
         )
         if "kicked" in (userGroup.status, userChannel.status):
