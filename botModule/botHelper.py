@@ -25,7 +25,7 @@ finally:
 
 
 ### Global Variable
-common_text = '\n\n<b><u>If you are facing any problem😫, so report📝 at @AJPyroVerseGroup</u></b>'
+common_text = '\n\n<b><u>If you are facing any problem😫, so report📝 at @tamilcartoonanimediscuss</u></b>'
 to_login = '<b>If you are not logged in then, send login detail in this format email,password.</b>\n'
 
 
@@ -52,7 +52,7 @@ async def search_user_in_community(
         )
         if "kicked" in (userGroup.status, userChannel.status):
             await msg.reply_text(
-                "<b>You are Banned🚫 from AJPyroVerse Community.\nContact @AJTimePyro (Owner of AJPyroVerse)</b>",
+                "<b>You are Banned🚫 from TCA Community.\nContact @HiroDarlingInTheFranxxAnime (Owner of TCA)</b>",
                 parse_mode = 'html'
             )
             return
@@ -65,13 +65,13 @@ async def search_user_in_community(
                     [
                         InlineKeyboardButton(
                             'Join our Channel.',
-                            url = 'https://t.me/AJPyroVerse'
+                            url = 'https://t.me/TamilCartoonAnime_Official'
                         )
                     ],
                     [
                         InlineKeyboardButton(
                             'Join our Group.',
-                            url = 'https://t.me/AJPyroVerseGroup'
+                            url = 'https://t.me/tamilcartoonanimediscuss'
                         )
                     ]
                 ]
